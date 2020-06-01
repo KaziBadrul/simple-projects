@@ -62,6 +62,7 @@
 
     addBtn.addEventListener("click", function() {
         inputValue = inputText.value;
+        inputText.value = "";
         let newItem = document.createElement("li");
         newItem.textContent = inputValue;
         let delBtn = document.createElement("button");
@@ -76,6 +77,7 @@
         delBtn.addEventListener("click", function() {
             delBtn.parentNode.remove();
         });
+        inputText.focus();
     });
 </script>
 
