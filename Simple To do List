@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To do list</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+    <style>
+        button {
+            border-radius: 20px;
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .subDiv {
+            padding: 15px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        body {
+            text-align: center;
+            font-family: Ubuntu;
+        }
+        
+        #enterInput {
+            border-radius: 25px;
+            width: 25vw;
+            border-color: rgba(0, 0, 0, 0.1);
+            height: 2vw;
+        }
+        
+        textarea:focus,
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My To do List</h1>
+    <div id="enter">
+        <p id="enterText">Enter a new task:</p>
+        <input type="text" id="enterInput" placeholder="  Wash the car." focus="false">
+        <button type="submit" class="submit">Add item</button>
+    </div>
+    <div id="divList">
+        <ol class="list">
+        </ol>
+    </div>
+</body>
+
+<script>
+    const addBtn = document.querySelector(".submit");
+    const inputText = document.querySelector("input");
+    const mainList = document.querySelector(".list");
+    let inputValue;
+
+    addBtn.addEventListener("click", function() {
+        inputValue = inputText.value;
+        let newItem = document.createElement("li");
+        newItem.textContent = inputValue;
+        let delBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+        delBtn.setAttribute("class", "delete");
+        let subDiv = document.createElement("div");
+        subDiv.setAttribute("class", "subDiv");
+        subDiv.appendChild(newItem);
+        subDiv.appendChild(delBtn);
+        mainList.appendChild(subDiv);
+
+        delBtn.addEventListener("click", function() {
+            delBtn.parentNode.remove();
+        });
+    });
+</script>
+
+</html>
